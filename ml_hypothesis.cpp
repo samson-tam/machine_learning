@@ -33,7 +33,7 @@ void ML_Hypothesis::ReadTrainingSet( string filename ) {
     ifstream data_file;
     char line_data[ 256 ];
     string input_value_string, output_value_string;
-    int input_pos, output_pos, del_pos, line_no;
+    int match_pos, input_pos, output_pos, del_pos, line_no;
     line_no = 0;
     num_items = 0;
     data_file.open( filename );
@@ -48,30 +48,37 @@ void ML_Hypothesis::ReadTrainingSet( string filename ) {
         line_no++;
 
         del_pos = line_string.find( ',' );
+        match_pos = line_string.find_first_not_of( "1234567890," );
         input_pos = line_string.find_first_of( "1234567890" );
         output_pos = line_string.find_first_of( "1234567890", del_pos );
 
         /* Ignore any lines that do not have integer value or ,
-         * Do check for matching number before ','.  If can find it, then no 
-         *  valid input present
+         * Check for ','.  If can find it, then can not differentiate
+         *  input from output
+         * Check that integer exists before and after ','
          */
-        if ( line_string.npos == del_pos ) {
-            cout << "Invalid line of data - skip line  " << line_no << endl;
-        } else if ( ( input_pos > del_pos ) || ( line_string.npos == input_pos ) ) {
-            cout << "Invalid input entry - skip line  " << line_no << endl;
-        } else if ( line_string.npos == output_pos ) {
-            cout << "Invalid output entry - skip line  " << line_no << endl;
-        } else {
-            try {
-                input_value_string = line_string.substr( 0, del_pos );
-                output_value_string = line_string.substr( del_pos + 1, line_string.npos - del_pos );
-                input.push_back( stoi( input_value_string ) );
-                output.push_back( stoi( output_value_string ) );
-                num_items++;
-            } catch ( exception &e ) {
-                cout << e.what() << " - skip line " << line_no << endl;
+        if ( line_string.npos == match_pos ) {
+
+            if ( line_string.npos == del_pos ) {
+                cout << "Invalid line of data - skip line  " << line_no << endl;
+            } else if ( ( input_pos > del_pos ) || ( line_string.npos == input_pos ) ) {
+                cout << "Invalid input entry - skip line  " << line_no << endl;
+            } else if ( line_string.npos == output_pos ) {
+                cout << "Invalid output entry - skip line  " << line_no << endl;
+            } else {
+                try {
+                    input_value_string = line_string.substr( 0, del_pos );
+                    output_value_string = line_string.substr( del_pos + 1, line_string.npos - del_pos );
+                    input.push_back( stoi( input_value_string ) );
+                    output.push_back( stoi( output_value_string ) );
+                    num_items++;
+                } catch ( exception &e ) {
+                    cout << e.what() << " - skip line " << line_no << endl;
+                }
             }
-        }
+        } else {
+            cout << "Found illegal characters - skip line  " << line_no << endl;
+        } 
     }
 }
 
