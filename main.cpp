@@ -47,6 +47,8 @@ int main( int argc, char *argv[ ] ) {
                 data_file.close();
                 string hyp_strategy( argv[ 2 ] );
                 int options[4] = { 0, 0, 0, 0 };
+
+                /* atoi converts any non-numeric values to 0 */
                 if ( argc >= 4 ) {
                     options[ 0 ] = atoi(argv[ 3 ]);
                 }
@@ -59,12 +61,23 @@ int main( int argc, char *argv[ ] ) {
                 if ( argc >= 7 ) {
                     options[ 3 ] = atoi(argv[ 6 ]);
                 }
+
+                cout << "options " << options[ 0 ] << ", " << options[ 1 ] << ", " << options[ 2 ] << ", " << options[ 3 ] << endl;
              
                 if ( "BRUTE" == hyp_strategy ) {
-                    ML_Hypothesis_Brute hyp_brute( filename );
-                    hyp_brute.Init( options[ 0 ], options[ 1 ], options[ 2 ], options[ 3 ] );
-                    hyp_brute.DisplayTrainingSet();
-                    hyp_brute.Solve();
+
+                    /* Check that options are valid */
+                    if ( ( options [ 0 ] < options[ 1 ] ) && 
+                         ( options [ 2 ] < options[ 3 ] ) ) {
+
+                        ML_Hypothesis_Brute hyp_brute( filename );
+                        hyp_brute.Init( options[ 0 ], options[ 1 ], options[ 2 ], options[ 3 ] );
+                        hyp_brute.DisplayTrainingSet();
+                        hyp_brute.Solve();
+                    } else {
+                        cout << "Invalid options - re-enter " << endl;
+                    }
+
                 } else if ( "GRADIENT" == hyp_strategy ) {
                     ML_Hypothesis_Gradient hyp_gradient( filename );
                     hyp_gradient.Init( options[ 0 ], options[ 1 ], options[ 2 ], options[ 3 ] );
