@@ -1,3 +1,7 @@
+/* 
+ * ml_hypothesis.hpp - header file for ml_hypothesis.cpp
+ *
+ */
 #ifndef __ML_HYPOTHESIS__
 #define __ML_HYPOTHESIS__
 #include <iostream>
@@ -9,6 +13,8 @@ class ML_Hypothesis {
     public:
     ML_Hypothesis( std::string filename );
     ~ML_Hypothesis( void );
+    void ReadTrainingSet( std::string filename );
+    void DisplayTrainingSet( void );
     virtual void Init( int option1, int option2, int option3, int option4 ) = 0;
     virtual void Solve( void ) = 0;
 

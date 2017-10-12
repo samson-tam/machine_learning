@@ -1,3 +1,7 @@
+/* 
+ * ml_hypothesis_brute.hpp - header file for ml_hypothesis_brute.cpp
+ *
+ */
 #include "ml_hypothesis.hpp"
 
 class ML_Hypothesis_Brute : public ML_Hypothesis {

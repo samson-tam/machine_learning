@@ -1,3 +1,7 @@
+/* 
+ * ml_hypothesis_gradient.hpp - header file for ml_hypothesis_brute.cpp
+ *
+ */
 #include "ml_hypothesis.hpp"
 
 class ML_Hypothesis_Gradient : public ML_Hypothesis {
