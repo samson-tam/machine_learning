@@ -1,5 +1,8 @@
 /* 
  * ml_hypothesis_brute.cpp - derived class for Brute force approach to learning algorithm
+ *                         - equations for hypothesis h and cost function J are 
+ *                           taken from the Coursera class, Machine Learning, 
+ *                           by Prof. Andrew Ng at Stanford University
  *
  */
 #include "ml_hypothesis_brute.hpp"
