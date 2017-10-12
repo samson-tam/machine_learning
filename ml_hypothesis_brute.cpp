@@ -7,7 +7,7 @@
  */
 #include "ml_hypothesis_brute.hpp"
 
-#include <tgmath.h>
+#include <ctgmath>
 #include <cfloat>
 
 using namespace std;
