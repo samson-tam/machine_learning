@@ -48,9 +48,9 @@ void ML_Hypothesis::ReadTrainingSet( string filename ) {
         line_no++;
 
         del_pos = line_string.find( ',' );
-        match_pos = line_string.find_first_not_of( "1234567890," );
-        input_pos = line_string.find_first_of( "1234567890" );
-        output_pos = line_string.find_first_of( "1234567890", del_pos );
+        match_pos = line_string.find_first_not_of( "-1234567890," );
+        input_pos = line_string.find_first_of( "-1234567890" );
+        output_pos = line_string.find_first_of( "-1234567890", del_pos );
 
         /* Ignore any lines that do not have integer value or ,
          * Check for ','.  If can find it, then can not differentiate
