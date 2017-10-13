@@ -33,8 +33,8 @@ void ML_Hypothesis::ReadTrainingSet( string filename ) {
     ifstream data_file;
     char line_data[ 256 ];
     string input_value_string, output_value_string;
-    int match_pos, input_pos, output_pos, del_pos, line_no;
-    line_no = 0;
+	size_t match_pos, input_pos, output_pos, del_pos;
+	int line_no = 0;
     num_items = 0;
     data_file.open( filename );
     while ( 1 ) {

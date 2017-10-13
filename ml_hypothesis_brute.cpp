@@ -72,8 +72,8 @@ void ML_Hypothesis_Brute::Init( int option1, int option2, int option3, int optio
  */
 void ML_Hypothesis_Brute::Solve( void ) {
 
-    float minJ = FLT_MAX;
-    float J;
+    double minJ = DBL_MAX;
+    double J;
     int h_x;
     int theta0_cnt, theta1_cnt, sum_cnt;
     int num_calcs = 0;
@@ -83,11 +83,11 @@ void ML_Hypothesis_Brute::Solve( void ) {
             J = 0;
             for ( sum_cnt = 0; sum_cnt < num_items; sum_cnt++ ) {
                 /* calculate h(x(i)) */
-                h_x = theta0_cnt + ( theta1_cnt * input.at( sum_cnt ) );
-                J += ( float )( pow ( ( double )( h_x - output.at( sum_cnt ) ), 2.0 ) );
+                h_x = ( theta0_cnt + ( theta1_cnt * ( int )input.at( sum_cnt ) ) );
+                J += ( pow ( ( h_x - output.at( sum_cnt ) ), 2.0 ) );
                 num_calcs++;
             }
-            J = J / ( float )num_items;
+            J = J / ( double )num_items;
             if ( J < minJ ) {
                 minJ = J;
                 theta0 = theta0_cnt;

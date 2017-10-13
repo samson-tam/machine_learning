@@ -19,10 +19,10 @@ class ML_Hypothesis {
     virtual void Solve( void ) = 0;
 
     protected:
-    std::vector <float> input;
-    std::vector <float> output;
+    std::vector <double> input;
+    std::vector <double> output;
     int num_items;
-    std::vector <float> cost_fn_values;
+    std::vector <double> cost_fn_values;
    
 };
 
