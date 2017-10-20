@@ -1,8 +1,10 @@
 /* 
- * ml_hypothesis_brute.cpp - derived class for Brute force approach to learning algorithm
- *                         - equations for hypothesis h and cost function J are 
- *                           taken from the Coursera class, Machine Learning, 
- *                           by Prof. Andrew Ng at Stanford University
+ * ml_hypothesis_brute.cpp - derived class for Brute force approach to 
+ *                           learning algorithm
+ *                         - equations for hypothesis h and cost 
+ *                           function J are taken from the Coursera 
+ *                           class, Machine Learning, by Prof. 
+ *                           Andrew Ng at Stanford University
  *
  */
 #include "ml_hypothesis_brute.hpp"
@@ -36,21 +38,21 @@ ML_Hypothesis_Brute::~ML_Hypothesis_Brute( void ) {
 /*
  * initialize parameters for learning algorithm
  */
-void ML_Hypothesis_Brute::Init( int option1, int option2, int option3, int option4 ) {
+void ML_Hypothesis_Brute::Init( double option1, double option2, double option3, double option4 ) {
     if ( 0 != option1 ) {
-        theta0_min = option1;
+        theta0_min = ( int )option1;
     }
 
     if ( 0 != option2 ) {
-        theta0_max = option2;
+        theta0_max = ( int )option2;
     }
 
     if ( 0 != option3 ) {
-        theta1_min = option3;
+        theta1_min = ( int )option3;
     }
 
     if ( 0 != option4 ) {
-        theta1_max = option4;
+        theta1_max = ( int )option4;
     }
 
     cout << "ML_Hypothesis_Brute init called" << endl;
@@ -66,7 +68,7 @@ void ML_Hypothesis_Brute::Init( int option1, int option2, int option3, int optio
  *  calculating cost function J.  Store minimum J and corresponding theta0
  *  and theta1
  * J ( theta0, theta1 ) = ( 1 / ( 2 * num_items ) ) * 
- *    SUMMATION ( i = 1 to num_items ) ( h(x(i) - y(i) )^2
+ *    SUMMATION ( i = 1 to num_items ) ( h(x(i))- y(i) )^2
  * h(x(i)) = theta0 + ( theta1 * x(i) )
  *
  */
