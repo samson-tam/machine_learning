@@ -9,7 +9,7 @@ class ML_Hypothesis_Brute : public ML_Hypothesis {
     public:
     ML_Hypothesis_Brute( std::string filename );
     ~ML_Hypothesis_Brute( void );
-    void Init( int option1, int option2, int option3, int option4 );
+    void Init( double option1, double option2, double option3, double option4 );
     void Solve( void );
 
     private:

@@ -46,20 +46,20 @@ int main( int argc, char *argv[ ] ) {
                                  constructor when loading training set */
                 data_file.close();
                 string hyp_strategy( argv[ 2 ] );
-                int options[4] = { 0, 0, 0, 0 };
+                double options[4] = { 0, 0, 0, 0 };
 
                 /* atoi converts any non-numeric values to 0 */
                 if ( argc >= 4 ) {
-                    options[ 0 ] = atoi(argv[ 3 ]);
+                    options[ 0 ] = strtod(argv[ 3 ], NULL);
                 }
                 if ( argc >= 5 ) {
-                    options[ 1 ] = atoi(argv[ 4 ]);
+                    options[ 1 ] = strtod(argv[ 4 ], NULL);
                 }
                 if ( argc >= 6 ) {
-                    options[ 2 ] = atoi(argv[ 5 ]);
+                    options[ 2 ] = strtod(argv[ 5 ], NULL);
                 }
                 if ( argc >= 7 ) {
-                    options[ 3 ] = atoi(argv[ 6 ]);
+                    options[ 3 ] = strtod(argv[ 6 ], NULL);
                 }
 
                 cout << "options " << options[ 0 ] << ", " << options[ 1 ] << ", " << options[ 2 ] << ", " << options[ 3 ] << endl;
@@ -74,6 +74,7 @@ int main( int argc, char *argv[ ] ) {
                         hyp_brute.Init( options[ 0 ], options[ 1 ], options[ 2 ], options[ 3 ] );
                         hyp_brute.DisplayTrainingSet();
                         hyp_brute.Solve();
+
                     } else {
                         cout << "Invalid options - re-enter " << endl;
                     }

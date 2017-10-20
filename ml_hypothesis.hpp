@@ -15,7 +15,7 @@ class ML_Hypothesis {
     ~ML_Hypothesis( void );
     void ReadTrainingSet( std::string filename );
     void DisplayTrainingSet( void );
-    virtual void Init( int option1, int option2, int option3, int option4 ) = 0;
+    virtual void Init( double option1, double option2, double  option3, double option4 ) = 0;
     virtual void Solve( void ) = 0;
 
     protected:
